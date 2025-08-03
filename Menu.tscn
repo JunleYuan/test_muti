@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://chsaojpo5smy3"]
+
+[ext_resource type="Script" uid="uid://diecuetjjqdh1" path="res://menu.gd" id="1_uubjt"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_uubjt")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Host butt" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 428.0
+offset_top = 46.0
+offset_right = 670.0
+offset_bottom = 196.0
+grow_horizontal = 2
+text = "HOST"
+
+[node name="Join butt" type="Button" parent="."]
+offset_left = 418.0
+offset_top = 296.0
+offset_right = 690.0
+offset_bottom = 456.0
+text = "Join"
+
+[node name="LobbyID" type="LineEdit" parent="."]
+offset_left = 820.0
+offset_top = 529.0
+offset_right = 1073.0
+offset_bottom = 588.0
+
+[node name="Name" type="LineEdit" parent="."]
+offset_left = 97.0
+offset_top = 97.0
+offset_right = 240.0
+offset_bottom = 141.0
+
+[node name="ID" type="LineEdit" parent="."]
+offset_left = 100.0
+offset_top = 41.0
+offset_right = 237.0
+offset_bottom = 79.0
+
+[connection signal="pressed" from="Host butt" to="." method="_on_host_butt_pressed"]
+[connection signal="pressed" from="Join butt" to="." method="_on_join_butt_pressed"]
+[connection signal="text_changed" from="Name" to="." method="_on_name_text_changed"]
+[connection signal="text_changed" from="ID" to="." method="_on_id_text_changed"]
