@@ -50,7 +50,6 @@ func join_lobby(this_lobby_id: int):
 	multiplayer.multiplayer_peer = peer
 	lobby_id = this_lobby_id
 	print("Joined lobby: ", this_lobby_id)
-	print(Steam.getNumLobbyMembers(lobby_id),",",lobby_members)
 	
 func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, response: int):
 	if response == Steam.CHAT_ROOM_ENTER_RESPONSE_SUCCESS:
@@ -73,6 +72,8 @@ func get_lobby_members():
 	for member in range(0, num_of_lobby_members):
 		var member_steam_id: int = Steam.getLobbyMemberByIndex(lobby_id, member)
 		var member_steam_name: String = Steam.getFriendPersonaName(member_steam_id)
+		
+		print(Steam.getNumLobbyMembers(lobby_id),",",lobby_members)
 		
 		if member_steam_id != Global.steam_id:
 			other_player_id = member_steam_id
