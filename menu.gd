@@ -50,7 +50,7 @@ func _on_exist_pressed() -> void:
 	var id: int = int(lobby_id.text)
 	print(Steam.getLobbyData(id, "name"))
 	
-	Steam.activateGameOverlayInviteDialog(Global.steam_id)
+	#Steam.activateGameOverlayInviteDialog(Global.steam_id)
 	
 	
 	#Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
