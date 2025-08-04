@@ -7,6 +7,8 @@ var lobby_id: int = 0
 var lobby_members : Array = []
 var lobby_members_max: int = 2
 
+var other_player_id: int = 0
+
 var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
 
 func _ready():
@@ -71,6 +73,9 @@ func get_lobby_members():
 	for member in range(0, num_of_lobby_members):
 		var member_steam_id: int = Steam.getLobbyMemberByIndex(lobby_id, member)
 		var member_steam_name: String = Steam.getFriendPersonaName(member_steam_id)
+		
+		if member_steam_id != Global.steam_id:
+			other_player_id = member_steam_id
 		
 		lobby_members.append({"steam_id" : member_steam_id, "steam_name": member_steam_name})
 		
