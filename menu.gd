@@ -1,8 +1,6 @@
 extends Node2D
 
 @onready var lobby_id = $LobbyID
-@onready var steam_name = $Name
-@onready var steam_id = $ID
 @onready var steam_Avatar = $Sprite2D
 @onready var ms = $MultiplayerSpawner
 
@@ -13,7 +11,7 @@ func _ready():
 	
 	ms.spawn_function = spawn_level
 	
-	print("your username: ", steam_name)
+	print("your username: ", Global.steam_username)
 
 func _process(delta):
 	pass
