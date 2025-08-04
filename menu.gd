@@ -46,8 +46,12 @@ func _on_lobby_id_text_changed(lobby_id: String) -> void:
 	pass # Replace with function body.
 
 func _on_exist_pressed() -> void:
+	
 	var id: int = int(lobby_id.text)
 	print(Steam.getLobbyData(id, "name"))
+	
+	Steam.activateGameOverlayInviteDialog(Global.steam_id)
+	
 	
 	#Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
 	#Steam.requestLobbyList()
