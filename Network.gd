@@ -7,9 +7,11 @@ var lobby_id: int = 0
 var lobby_members : Array = []
 var lobby_members_max: int = 2
 
+var peer: SteamMultiplayerPeer = SteamMultiplayerPeer.new()
+
 func _ready():
-	Steam.lobby_created.connect(_on_lobby_created)
-	Steam.lobby_joined.connect(_on_lobby_joined)
+	peer.lobby_created.connect(_on_lobby_created)
+	peer.lobby_joined.connect(_on_lobby_joined)
 	Steam.p2p_session_request.connect(_on_p2p_session_request)
 
 func process(delta):
@@ -20,26 +22,34 @@ func create_lobby():
 	
 	if lobby_id == 0:
 		is_host = true
-		Steam.createLobby(Steam.LOBBY_TYPE_PUBLIC,lobby_members_max)
+		#Steam.createLobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC,lobby_members_max)
+		peer.create_lobby(SteamMultiplayerPeer.LOBBY_TYPE_PUBLIC,lobby_members_max)
+		multiplayer.multiplayer_peer = peer
 		
+		return true
+	return false
+
+
 func _on_lobby_created(connect: int, this_lobby_id: int):
-	if connect == 1:
+	if connect:
 		lobby_id = this_lobby_id
 		
 		Steam.setLobbyJoinable(lobby_id,true)
-		
-		Steam.setLobbyData(lobby_id,"name","My Lobby")
+		Steam.setLobbyData(lobby_id,"name",str(Steam.getPersonaName())+"'s Lobby")
 		
 		print("CREATED LOBBY: ", lobby_id)
 		var set_relay: bool = Steam.allowP2PPacketRelay(true)
 
 func join_lobby(this_lobby_id: int):
-	Steam.joinLobby(this_lobby_id)
-	print("Joined: ", this_lobby_id)
+
+	#Steam.joinLobby(this_lobby_id)
+	peer.connect_lobby(this_lobby_id)
+	multiplayer.multiplayer_peer = peer
+	lobby_id = this_lobby_id
+	print("Joined lobby: ", this_lobby_id)
 	print(Steam.getNumLobbyMembers(lobby_id),",",lobby_members)
 	
 func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, response: int):
-	print("someone joined")
 	if response == Steam.CHAT_ROOM_ENTER_RESPONSE_SUCCESS:
 		lobby_id = this_lobby_id
 		
@@ -56,6 +66,7 @@ func get_lobby_members():
 		var member_steam_name: String = Steam.getFriendPersonaName(member_steam_id)
 		
 		lobby_members.append({"steam_id" : member_steam_id, "steam_name": member_steam_name})
+		
 
 func send_p2p_packet(this_target: int, packet_data: Dictionary, send_type: int = 0):
 	var channel: int = 0

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://chsaojpo5smy3"]
+[gd_scene load_steps=3 format=3 uid="uid://chsaojpo5smy3"]
 
 [ext_resource type="Script" uid="uid://diecuetjjqdh1" path="res://menu.gd" id="1_uubjt"]
+[ext_resource type="Texture2D" uid="uid://d7w28og7uh6p" path="res://icon.svg" id="2_5yleq"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_uubjt")
@@ -34,18 +35,7 @@ offset_bottom = 588.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(984, 177)
-
-[node name="exist" type="Button" parent="."]
-offset_left = 821.0
-offset_top = 192.0
-offset_right = 974.0
-offset_bottom = 291.0
-text = "Exist"
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-spawn_path = NodePath("..")
+texture = ExtResource("2_5yleq")
 
 [connection signal="pressed" from="Host butt" to="." method="_on_host_butt_pressed"]
 [connection signal="pressed" from="Join butt" to="." method="_on_join_butt_pressed"]
-[connection signal="text_changed" from="LobbyID" to="." method="_on_lobby_id_text_changed"]
-[connection signal="pressed" from="exist" to="." method="_on_exist_pressed"]
