@@ -12,6 +12,8 @@ func _ready():
 	Steam.getPlayerAvatar(3,Global.steam_id)
 	
 	ms.spawn_function = spawn_level
+	
+	print("your username: ", steam_name)
 
 func _process(delta):
 	pass
