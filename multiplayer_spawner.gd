@@ -13,6 +13,7 @@ func _ready():
 var players = {}
 
 func spawnPlayer(data):
+	print(data)
 	var p = playerScene.instantiate()
 	p.set_multiplayer_authority(data)
 	players[data] = p

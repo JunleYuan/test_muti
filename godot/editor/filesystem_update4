@@ -1,1 +1,6 @@
 res://Menu.tscn
+res://Player.tscn
+res://multiplayer_spawner.gd
+res://level_test.tscn
+res://menu.gd
+res://player.gd

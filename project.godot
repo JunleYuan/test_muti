@@ -23,7 +23,6 @@ Network="*res://Network.gd"
 
 [display]
 
-mouse_cursor/custom_image="uid://cn78akusuigt8"
 mouse_cursor/custom_image_hotspot=Vector2(256, 256)
 
 [rendering]
