@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://chsaojpo5smy3"]
+[gd_scene load_steps=3 format=3 uid="uid://chsaojpo5smy3"]
 
 [ext_resource type="Script" uid="uid://diecuetjjqdh1" path="res://menu.gd" id="1_uubjt"]
+[ext_resource type="Texture2D" uid="uid://d7w28og7uh6p" path="res://icon.svg" id="2_5yleq"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_uubjt")
@@ -33,7 +34,8 @@ offset_right = 1073.0
 offset_bottom = 588.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(984, 177)
+position = Vector2(1087, 64)
+texture = ExtResource("2_5yleq")
 
 [node name="exist" type="Button" parent="."]
 offset_left = 821.0
