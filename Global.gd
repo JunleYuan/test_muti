@@ -10,7 +10,7 @@ func _init():
 	OS.set_environment("SteamAPPID", app_id)
 	OS.set_environment("SteamGameID", game_id)
 	
-func _ready():
+func _ready():	
 	Steam.steamInit()
 	
 	if !Steam.isSteamRunning():

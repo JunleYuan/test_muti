@@ -12,6 +12,7 @@ config_version=5
 
 config/name="testing_multi"
 run/main_scene="uid://chsaojpo5smy3"
+config/use_hidden_project_data_directory=false
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +20,11 @@ config/icon="res://icon.svg"
 
 Global="*res://Global.gd"
 Network="*res://Network.gd"
+
+[display]
+
+mouse_cursor/custom_image="uid://cn78akusuigt8"
+mouse_cursor/custom_image_hotspot=Vector2(256, 256)
 
 [rendering]
 
