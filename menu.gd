@@ -24,8 +24,6 @@ func _on_join_butt_pressed() -> void:
 	var id: int = int(lobby_id.text)
 	Network.join_lobby(id)
 	
-	
-
 func _on_loaded_avatar(user_id: int, avatar_size: int, avatar_buffer: PackedByteArray) -> void:
 	print("Avatar for user: %s" % user_id)
 	print("Size: %s" % avatar_size)
@@ -50,6 +48,9 @@ func _on_lobby_id_text_changed(lobby_id: String) -> void:
 func _on_exist_pressed() -> void:
 	var id: int = int(lobby_id.text)
 	print(Steam.getLobbyData(id, "name"))
+	
+	#Steam.addRequestLobbyListDistanceFilter(Steam.LOBBY_DISTANCE_FILTER_WORLDWIDE)
+	#Steam.requestLobbyList()
 
 func spawn_level(data):
 	var a = (load(data) as PackedScene).instantiate()

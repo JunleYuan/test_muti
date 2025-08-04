@@ -13,6 +13,7 @@ func _ready():
 	peer.lobby_created.connect(_on_lobby_created)
 	peer.lobby_joined.connect(_on_lobby_joined)
 	Steam.p2p_session_request.connect(_on_p2p_session_request)
+	Steam.lobby_match_list.connect(_on_lobby_match_list)
 
 func process(delta):
 	if lobby_id > 0:
@@ -55,6 +56,12 @@ func _on_lobby_joined(this_lobby_id: int, _permissions: int, _locked: bool, resp
 		
 		get_lobby_members()
 		make_p2p_handshake()
+
+func _on_lobby_match_list(lobbies):
+	
+	for lobby in lobbies:
+		print(Steam.getLobbyData(lobby, "name"))
+		print(Steam.getNumLobbyMembers(lobby))
 
 func get_lobby_members():
 	lobby_members.clear()
